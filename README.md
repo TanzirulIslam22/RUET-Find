@@ -9,7 +9,7 @@ Students can report lost or found items, browse listings with filters, view loca
 | Platform | URL |
 | -------- | --- |
 | **Frontend (Vercel)** | https://ruet-find.vercel.app |
-| **Backend API (Railway)** | https://server-production-f492.up.railway.app |
+| **Backend API (Railway)** | https://ruet-find-production.up.railway.app |
 | **GitHub Repository** | https://github.com/TanzirulIslam22/RUET-Find |
 
 ## Features
