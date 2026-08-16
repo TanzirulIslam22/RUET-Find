@@ -1,0 +1,448 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>RUET Lost &amp; Found Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#cebdff",
+                        "error": "#ba1a1a",
+                        "on-surface": "#161d1f",
+                        "on-tertiary-container": "#474000",
+                        "background": "#f4fafd",
+                        "on-primary-fixed": "#1f1243",
+                        "on-secondary-container": "#4f3d85",
+                        "surface-variant": "#dde4e6",
+                        "on-secondary-fixed": "#200755",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e2e9ec",
+                        "secondary-fixed": "#e8ddff",
+                        "surface-container": "#e8eff1",
+                        "on-secondary-fixed-variant": "#4d3a83",
+                        "surface-container-low": "#eef5f7",
+                        "secondary": "#65529c",
+                        "surface-tint": "#64568b",
+                        "inverse-surface": "#2b3234",
+                        "inverse-primary": "#cebefa",
+                        "on-surface-variant": "#49454f",
+                        "on-tertiary-fixed": "#201c00",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#ebf2f4",
+                        "surface-dim": "#d4dbdd",
+                        "secondary-container": "#c1adfe",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e8ddff",
+                        "on-primary-container": "#332658",
+                        "surface-bright": "#f4fafd",
+                        "outline-variant": "#cac4d0",
+                        "tertiary-fixed-dim": "#d4c876",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#9d8ec7",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#f1e48f",
+                        "on-background": "#161d1f",
+                        "surface-container-highest": "#dde4e6",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#4c3f72",
+                        "tertiary-container": "#b8ad5e",
+                        "on-tertiary-fixed-variant": "#4f4700",
+                        "primary-fixed-dim": "#cebefa",
+                        "surface": "#f4fafd",
+                        "outline": "#7a757f",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#685f18",
+                        "primary": "#64568b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "margin-desktop": "48px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "max-width": "1120px",
+                        "gutter": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .nav-item.active { background-color: theme('colors.primary-container'); color: theme('colors.on-primary-container'); font-weight: 600; }
+        .nav-item:hover:not(.active) { background-color: theme('colors.surface-container'); }
+        .card-shadow { box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .card-shadow:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.08); }
+    </style>
+</head>
+<body class="text-on-surface flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-surface border-r border-outline-variant flex flex-col hidden md:flex sticky top-0 h-screen shrink-0">
+<div class="p-lg border-b border-outline-variant">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">RUET Find Admin</h1>
+</div>
+<nav class="flex-1 py-lg px-md flex flex-col gap-sm overflow-y-auto">
+<a class="nav-item active flex items-center gap-sm px-md py-sm rounded-lg font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="nav-item flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="report">report</span> Reports
+            </a>
+<a class="nav-item flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span> Users
+            </a>
+<a class="nav-item flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant font-body-md text-body-md transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+</nav>
+<div class="p-md border-t border-outline-variant">
+<button class="flex items-center gap-sm w-full px-md py-sm rounded-lg text-error hover:bg-error-container transition-colors font-body-md text-body-md">
+<span class="material-symbols-outlined" data-icon="logout">logout</span> Sign Out
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Mobile Top Nav (visible only on small screens) -->
+<header class="md:hidden bg-surface border-b border-outline-variant p-md flex items-center justify-between sticky top-0 z-10">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">RUET Find Admin</h1>
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop bg-[#f8f9fa]">
+<div class="max-w-max-width mx-auto space-y-xl">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg md:font-headline-lg md:text-headline-lg text-on-surface mb-xs">Dashboard Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Platform metrics and recent activity for RUET Lost &amp; Found.</p>
+</div>
+<div class="flex gap-sm w-full md:w-auto">
+<button class="flex-1 md:flex-none px-lg py-sm rounded-lg border border-outline text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">download</span> Export
+                         </button>
+</div>
+</header>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Metric Card 1 -->
+<div class="bg-surface rounded-xl p-lg border border-outline-variant card-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10">
+<span class="material-symbols-outlined text-display" data-weight="fill">group</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-sm">Total Users</h3>
+<p class="font-display text-display text-on-surface mb-md">2,405</p>
+<div class="flex items-center gap-xs text-primary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="">+12% this month</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface rounded-xl p-lg border border-outline-variant card-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10 text-error">
+<span class="material-symbols-outlined text-display" data-weight="fill">search_off</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-sm">Active Lost Reports</h3>
+<p class="font-display text-display text-on-surface mb-md">142</p>
+<div class="flex items-center gap-xs text-error text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="">+5 new today</span>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface rounded-xl p-lg border border-outline-variant card-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10 text-secondary">
+<span class="material-symbols-outlined text-display" data-weight="fill">inventory_2</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-sm">Found Items Held</h3>
+<p class="font-display text-display text-on-surface mb-md">87</p>
+<div class="flex items-center gap-xs text-secondary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span class="">Awaiting claim</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface rounded-xl p-lg border border-outline-variant card-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10 text-primary">
+<span class="material-symbols-outlined text-display" data-weight="fill">task_alt</span>
+</div>
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-sm">Items Recovered</h3>
+<p class="font-display text-display text-on-surface mb-md">430</p>
+<div class="flex items-center gap-xs text-primary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="">64% recovery rate</span>
+</div>
+</div>
+</section>
+<!-- Charts & Activity Area -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Chart Area -->
+<div class="lg:col-span-2 bg-surface rounded-xl border border-outline-variant p-lg card-shadow flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Activity Trends</h3>
+<select class="bg-surface-container rounded border-none font-body-sm text-body-sm text-on-surface focus:ring-primary focus:ring-1 cursor-pointer">
+<option>Last 30 Days</option>
+<option>This Semester</option>
+<option>All Time</option>
+</select>
+</div>
+<div class="flex-1 w-full relative min-h-[300px]">
+<canvas id="activityChart" width="701" height="375" style="display: block; box-sizing: border-box; height: 300px; width: 561.1px;"></canvas>
+</div>
+</div>
+<!-- Pending Actions List -->
+<div class="bg-surface rounded-xl border border-outline-variant p-0 card-shadow flex flex-col">
+<div class="p-lg border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Needs Attention</h3>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Action Item -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm font-medium text-on-surface">Report Flagged</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mb-sm">Multiple users flagged "Black Umbrella" post.</p>
+<button class="font-label-sm text-label-sm text-primary hover:underline">Review Report</button>
+</div>
+</div>
+<!-- Action Item -->
+<div class="p-md border-b border-outline-variant hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm font-medium text-on-surface">New Admin Request</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mb-sm">Dr. Rahman requested dashboard access.</p>
+<div class="flex gap-sm">
+<button class="font-label-sm text-label-sm text-primary hover:underline">Approve</button>
+<button class="font-label-sm text-label-sm text-error hover:underline">Deny</button>
+</div>
+</div>
+</div>
+<!-- Action Item -->
+<div class="p-md hover:bg-surface-container-low transition-colors flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm font-medium text-on-surface">System Alert</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mb-sm">Weekly digest failed to send.</p>
+<button class="font-label-sm text-label-sm text-primary hover:underline">View Logs</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Reports Table -->
+<section class="bg-surface rounded-xl border border-outline-variant card-shadow overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Submissions</h3>
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full pl-xl pr-sm py-sm rounded bg-surface-container border-none focus:ring-1 focus:ring-primary font-body-sm text-body-sm placeholder:text-on-surface-variant text-on-surface" placeholder="Search reports..." type="text">
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-medium">Item</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-medium">Type</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-medium">User</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-medium">Date</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-medium">Status</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded bg-surface-variant overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A small, minimalist thumbnail image of a black scientific calculator on a clean white desk, brightly lit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpYBP8W1ryCSI3j2clW2IInyk1SeY3Utc0F1D6H_p3DVLWmj2UpIRMgbTZAAOvchXyj0XgJcdvcSxxDzV2RtPaTzZ_4Y5Y5zkyxU6cK8JZtssl9gnsJTjPvlFqIEoZ2AD2CAux7ltT7p_1Lb3nLXZkWxUOp8xeCVg-x3ovIgCaas5r5Q-57gWEpyeiMpTWTnh6WV8g448qpNNQ2Xd_EH3VvJKlPD1VMejqIDRVXjODFNmYAbscv7xy">
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-on-surface">Casio Calculator</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs">Electronics</p>
+</div>
+</div>
+</td>
+<td class="p-md">
+<span class="inline-flex items-center px-2 py-1 rounded bg-error-container text-error font-label-sm text-label-sm text-xs">Lost</span>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface">S. Ahmed</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant">2 hours ago</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm text-xs">
+<span class="w-2 h-2 rounded-full bg-outline"></span> Pending
+                                         </span>
+</td>
+<td class="p-md text-right">
+<div class="flex justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded hover:bg-surface-container text-primary" title="Approve">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</button>
+<button class="p-xs rounded hover:bg-surface-container text-error" title="Reject">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="p-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded bg-surface-variant overflow-hidden shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">draft</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-medium text-on-surface">Architecture Draft</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-xs">Documents</p>
+</div>
+</div>
+</td>
+<td class="p-md">
+<span class="inline-flex items-center px-2 py-1 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm text-xs">Found</span>
+</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface">T. Rahman</td>
+<td class="p-md font-body-sm text-body-sm text-on-surface-variant">5 hours ago</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded bg-[#e6f4ea] text-[#137333] font-label-sm text-label-sm text-xs">
+<span class="w-2 h-2 rounded-full bg-[#1e8e3e]"></span> Active
+                                         </span>
+</td>
+<td class="p-md text-right">
+<div class="flex justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs rounded hover:bg-surface-container text-on-surface-variant" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-xs rounded hover:bg-surface-container text-error" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-md border-t border-outline-variant bg-surface flex justify-center">
+<button class="font-label-md text-label-md text-primary hover:underline">View All Reports</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<script>
+        // Simple Chart.js initialization for Activity Trends
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('activityChart').getContext('2d');
+            
+            // Extract colors from computed styles for the chart
+            const root = document.documentElement;
+            const primaryColor = getComputedStyle(root).getPropertyValue('--tw-colors-primary') || '#64568b';
+            const secondaryColor = getComputedStyle(root).getPropertyValue('--tw-colors-secondary') || '#65529c';
+            const outlineColor = getComputedStyle(root).getPropertyValue('--tw-colors-outline-variant') || '#cac4d0';
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        {
+                            label: 'Lost Reports',
+                            data: [12, 19, 15, 25, 22, 10, 8],
+                            borderColor: '#ba1a1a', // Error color
+                            backgroundColor: 'rgba(186, 26, 26, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Found Reports',
+                            data: [8, 15, 12, 20, 25, 18, 12],
+                            borderColor: primaryColor,
+                            backgroundColor: 'rgba(100, 86, 139, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                usePointStyle: true,
+                                font: { family: 'Inter', size: 12 }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: outlineColor, drawBorder: false },
+                            ticks: { font: { family: 'Inter', size: 12 } }
+                        },
+                        x: {
+                            grid: { display: false, drawBorder: false },
+                            ticks: { font: { family: 'Inter', size: 12 } }
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

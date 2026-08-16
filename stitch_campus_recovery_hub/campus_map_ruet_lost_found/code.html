@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RUET Lost &amp; Found - Campus Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#cebdff",
+                    "error": "#ba1a1a",
+                    "on-surface": "#161d1f",
+                    "on-tertiary-container": "#474000",
+                    "background": "#f4fafd",
+                    "on-primary-fixed": "#1f1243",
+                    "on-secondary-container": "#4f3d85",
+                    "surface-variant": "#dde4e6",
+                    "on-secondary-fixed": "#200755",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e2e9ec",
+                    "secondary-fixed": "#e8ddff",
+                    "surface-container": "#e8eff1",
+                    "on-secondary-fixed-variant": "#4d3a83",
+                    "surface-container-low": "#eef5f7",
+                    "secondary": "#65529c",
+                    "surface-tint": "#64568b",
+                    "inverse-surface": "#2b3234",
+                    "inverse-primary": "#cebefa",
+                    "on-surface-variant": "#49454f",
+                    "on-tertiary-fixed": "#201c00",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#ebf2f4",
+                    "surface-dim": "#d4dbdd",
+                    "secondary-container": "#c1adfe",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#e8ddff",
+                    "on-primary-container": "#332658",
+                    "surface-bright": "#f4fafd",
+                    "outline-variant": "#cac4d0",
+                    "tertiary-fixed-dim": "#d4c876",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#9d8ec7",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#f1e48f",
+                    "on-background": "#161d1f",
+                    "surface-container-highest": "#dde4e6",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#4c3f72",
+                    "tertiary-container": "#b8ad5e",
+                    "on-tertiary-fixed-variant": "#4f4700",
+                    "primary-fixed-dim": "#cebefa",
+                    "surface": "#f4fafd",
+                    "outline": "#7a757f",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#685f18",
+                    "primary": "#64568b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "xs": "4px",
+                    "lg": "24px",
+                    "margin-desktop": "48px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "max-width": "1120px",
+                    "gutter": "24px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="flex flex-col h-full overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant flex-shrink-0 z-10 relative">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-max-width mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">RUET Lost &amp; Found</span>
+</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Browse</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Map</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">How it works</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="hidden md:flex items-center justify-center px-4 py-2 border border-outline-variant rounded-lg text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors">
+                    Sign in
+                </button>
+<button class="flex items-center justify-center px-4 py-2 bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md hover:bg-[#7c69b5] hover:text-white transition-colors">
+                    Report an item
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col md:flex-row h-full overflow-hidden">
+<!-- Map Canvas (Left) -->
+<section class="flex-grow relative h-[50vh] md:h-full bg-surface-container-low border-r border-outline-variant overflow-hidden">
+<!-- Simulated Map Background -->
+<div class="absolute inset-0 w-full h-full" data-alt="A clean, minimalist vector map of a university campus. Light gray roads, subtle green areas for parks, white buildings. Shot from top-down overhead perspective. High key lighting, very subtle shadows. Functional and clear. Colors: white, light gray, pale green." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCU9bg7T1_RcKNTRhqQThb5XE9TalCWHWRmDFvn2JJmr2SzuIAVPoBoFmBxJOBJBTAbrTXH9NZHhVYzQZ_L2HsMgRRFWy2-5B4F7vGF5oAAKusxAyPBBnJH-UaPhGN__Qi0ZnkFr--gZhZyulwsBeNjjz8NPSI7r5QCA6rVl6JUDM_aVx3w8yi0UVcfZKbVyriOkIra6-ql7Dhtfv6jNECuCFs7Q4GfYMqWFa4Y7BfNsL8w0fnEhG9r')"></div>
+<!-- Map Controls -->
+<div class="absolute top-md left-md right-md flex justify-between items-start pointer-events-none">
+<!-- Search/Filter -->
+<div class="bg-surface rounded-xl border border-outline-variant shadow-sm p-sm flex items-center gap-sm pointer-events-auto max-w-sm w-full">
+<span class="material-symbols-outlined text-on-surface-variant ml-2">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-sm text-body-sm text-on-surface outline-none placeholder-on-surface-variant" placeholder="Search campus locations..." type="text"/>
+</div>
+<!-- Zoom Controls -->
+<div class="flex flex-col gap-xs pointer-events-auto bg-surface rounded-lg border border-outline-variant overflow-hidden shadow-sm hidden md:flex">
+<button class="p-2 hover:bg-surface-variant text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">add</span></button>
+<div class="h-px bg-outline-variant w-full"></div>
+<button class="p-2 hover:bg-surface-variant text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">remove</span></button>
+</div>
+</div>
+<!-- Map Pins (Simulated) -->
+<div class="absolute top-1/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group pointer-events-auto">
+<div class="bg-surface px-2 py-1 rounded shadow-sm border border-outline-variant mb-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<p class="font-label-sm text-label-sm text-on-surface">Central Library</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container/20 border border-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="absolute top-1/2 left-2/3 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group pointer-events-auto">
+<div class="bg-surface px-2 py-1 rounded shadow-sm border border-outline-variant mb-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<p class="font-label-sm text-label-sm text-on-surface">TSC</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 border border-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group pointer-events-auto">
+<div class="bg-surface px-2 py-1 rounded shadow-sm border border-outline-variant mb-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+<p class="font-label-sm text-label-sm text-on-surface">Academic Building 1</p>
+</div>
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-md animate-pulse">
+<span class="material-symbols-outlined text-white text-xs" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+</div>
+</section>
+<!-- Sidebar List (Right) -->
+<aside class="w-full md:w-[400px] lg:w-[480px] bg-surface flex flex-col h-[50vh] md:h-full border-t md:border-t-0 md:border-l border-outline-variant z-20 shadow-[-4px_0_12px_rgba(0,0,0,0.02)]">
+<!-- Sidebar Header & Filters -->
+<div class="p-lg border-b border-outline-variant shrink-0 bg-surface">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-md">Items Nearby</h1>
+<div class="flex gap-sm">
+<button class="px-4 py-1.5 rounded-full bg-primary text-white font-label-md text-label-md transition-colors shadow-sm">All</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Lost</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Found</button>
+</div>
+</div>
+<!-- List Content -->
+<div class="flex-grow overflow-y-auto p-md space-y-sm bg-surface-container-low">
+<!-- Item Card 1 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all cursor-pointer flex gap-md">
+<div class="w-16 h-16 rounded-lg bg-surface-variant shrink-0 overflow-hidden" data-alt="A macro shot of a sleek black scientific calculator resting on a clean white desk. Modern, minimalist styling, high key lighting, sharp focus. Colors: black, white, subtle gray shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEgzHbdcSPJ8tjwJunx_zuCwu5iuP44Fv80rFSowYKIBq3dSF4bCfSvd2PbJNrTMVEl7bIbgKxkAqLnFkh5opYxvu9JfmJhsvoPQpmHGB5rApNh4v_sLrvNT1YRNKiKAL10TAlG3CWW_j6spTBUw6P8q5Vjv4B80rTZHnzYRZlKBo4ptJn3WXomMWpR0VQ07m-BkhVtsDKwTbhHzYL34wMydnxzz5TT3FIObZOSL36k1LXJldrUKB-')"></div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Casio Scientific Calculator</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-error/10 text-error">Lost</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Last seen near Academic Building 1</p>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-label-sm text-label-sm">2 hours ago</span>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all cursor-pointer flex gap-md">
+<div class="w-16 h-16 rounded-lg bg-surface-variant shrink-0 overflow-hidden flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-3xl">key</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Set of 3 Keys</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-primary-container/20 text-primary">Found</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Found on a bench near TSC</p>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-label-sm text-label-sm">Yesterday</span>
+</div>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface rounded-xl border border-outline-variant p-md hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all cursor-pointer flex gap-md opacity-75">
+<div class="w-16 h-16 rounded-lg bg-surface-variant shrink-0 overflow-hidden" data-alt="A minimalist photograph of a blue spiral notebook and a silver pen on a light gray concrete surface. Soft, diffused daylight. Clean aesthetic. Colors: light blue, silver, light gray." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB_uWAM83nydyvVs31WoD7OZoJ8e1lbOzv5xx82SzEUIoo3t2zSlHL08B9E7JCYM2AK05auWSo-ysy8jjIX9kX5vUGaI96_BNQtUK_ZdS2nQXNmsd5cGtcmJ5G6AuUX9axqhwJPUT3zhom-1vt5f_e-xIgkA1GOUACsoL7gN2QI89RcEFhidmp1ayybtwgWVNUrsaGA8c_64WMBjChfFvUccQnc3v2xE18BVAPza_7xAMpZGYiwcPbU')"></div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Blue Physics Notebook</h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-error/10 text-error">Lost</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Left in Central Library, 2nd floor</p>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-label-sm text-label-sm">3 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

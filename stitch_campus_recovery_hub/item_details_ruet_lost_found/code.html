@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Item Details - RUET Lost &amp; Found</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#cebdff",
+                      "error": "#ba1a1a",
+                      "on-surface": "#161d1f",
+                      "on-tertiary-container": "#474000",
+                      "background": "#f4fafd",
+                      "on-primary-fixed": "#1f1243",
+                      "on-secondary-container": "#4f3d85",
+                      "surface-variant": "#dde4e6",
+                      "on-secondary-fixed": "#200755",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#e2e9ec",
+                      "secondary-fixed": "#e8ddff",
+                      "surface-container": "#e8eff1",
+                      "on-secondary-fixed-variant": "#4d3a83",
+                      "surface-container-low": "#eef5f7",
+                      "secondary": "#65529c",
+                      "surface-tint": "#64568b",
+                      "inverse-surface": "#2b3234",
+                      "inverse-primary": "#cebefa",
+                      "on-surface-variant": "#49454f",
+                      "on-tertiary-fixed": "#201c00",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#ebf2f4",
+                      "surface-dim": "#d4dbdd",
+                      "secondary-container": "#c1adfe",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#e8ddff",
+                      "on-primary-container": "#332658",
+                      "surface-bright": "#f4fafd",
+                      "outline-variant": "#cac4d0",
+                      "tertiary-fixed-dim": "#d4c876",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#9d8ec7",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#f1e48f",
+                      "on-background": "#161d1f",
+                      "surface-container-highest": "#dde4e6",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#4c3f72",
+                      "tertiary-container": "#b8ad5e",
+                      "on-tertiary-fixed-variant": "#4f4700",
+                      "primary-fixed-dim": "#cebefa",
+                      "surface": "#f4fafd",
+                      "outline": "#7a757f",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#685f18",
+                      "primary": "#64568b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "xs": "4px",
+                      "lg": "24px",
+                      "margin-desktop": "48px",
+                      "sm": "8px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "max-width": "1120px",
+                      "gutter": "24px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.04em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopNavBar (Nav shell suppressed for item details as it's a focused task/details screen) -->
+<header class="bg-surface border-b border-outline-variant w-full top-0 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-max-width mx-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">RUET Lost &amp; Found</div>
+<div class="flex items-center gap-md">
+<button class="font-label-md text-label-md text-primary bg-primary-fixed hover:bg-primary-fixed-dim px-4 py-2 rounded-lg transition-colors">Sign in</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Back Navigation -->
+<a class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors mb-lg group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="font-label-md text-label-md">Back to Browse</span>
+</a>
+<!-- Details Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Large Image Gallery -->
+<div class="md:col-span-7 space-y-md">
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-surface-variant aspect-[4/3] md:aspect-square relative flex items-center justify-center group">
+<img alt="Item Image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A high-quality, evenly lit studio photograph of a black leather wallet sitting on a clean, light gray surface. The lighting is soft and diffuse, creating a modern, minimalist light-mode aesthetic. The focus is sharp on the texture of the leather. The overall mood is objective, clear, and utilitarian, fitting a lost and found inventory system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0qexYoqShpqn27G_oDmgTaULTLgmgu6MXlpXie7H5RvSrYn6D8dR2J-NiIM1x1jNKXGC6anFqb1HXTNFnFchrdycT5wBr7ySZZhpaHNHaW_4GnGPUXSlUIKVKTp3sGRkxMlyGixLuuy11dpJz1qJfXLtR3LW-LMuhG0WBUPqayY1U0d0H_U5JsFv6Fln9n5axx7N8VLRkNsaQkbXH-mlPR0rX88OMl52g2NyPLDHw1JcjQEuE9sA5"/>
+<div class="absolute top-md left-md">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                             FOUND
+                         </span>
+</div>
+</div>
+<!-- Thumbnail Strip -->
+<div class="grid grid-cols-4 gap-md">
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-primary aspect-square cursor-pointer ring-2 ring-primary ring-offset-2 ring-offset-background">
+<img alt="Thumbnail 1" class="w-full h-full object-cover" data-alt="A close-up, high-quality photograph of the corner of a black leather wallet, highlighting the fine stitching and material texture. The lighting is bright and neutral, consistent with a clean, light-mode design aesthetic. The image is objective and clear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt6BQ9kUVt91RR9BIPZvBn6Q2Guu_dDB4J0OyfFb9Y4zDXDqwVghLwBGl-cAnlIwCkCsDL6-QioIh6rM4AiGxZxxVUgpiyGv3QMfljNzn69COFj0lxxKIoLL9cVv7gVWmpeh3Zgk1yNboJGm16IPFpGj4j-dTl1bsYor5SOBHZSI1yhvK76PbRhglNf9_OU7MvLodSuC1f1036CXPFXwdqN9NTYKAzYQwQwGCu7G7EF4Ss7xvoVi2i"/>
+</div>
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-surface-variant aspect-square cursor-pointer hover:border-outline transition-colors opacity-70 hover:opacity-100">
+<img alt="Thumbnail 2" class="w-full h-full object-cover" data-alt="A straight-down, top-view photograph of an open black leather wallet revealing card slots. The background is a stark, light gray, matching a clean, minimalist light-mode UI style. The lighting is soft and even." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxKFIoFe6wxb8HLhSJEamoONx8iwjfQQpUU-7bBHKik6Yk5BSvVRJ1iitaUNRwGEvbORIHzJ368KTWt1VhYH9HGACEdRYcJT5780_20OJP2Hyn-q3LoYO58oD0jcBytAtmQR-H681azCXYiskSIBaI1CEjRybyKh3eXMH798o0oUcHk_qr7rpbY2-MJkLCZ7q8AM3dBCf3uXiRbJz5XVWyFJOcAE3pMTUNTFp2uex1W2H8cu0GjF3G"/>
+</div>
+</div>
+</div>
+<!-- Right Column: Item Information -->
+<div class="md:col-span-5 flex flex-col pt-md md:pt-0">
+<!-- Header Info -->
+<div class="mb-lg">
+<div class="flex items-center gap-2 mb-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="category">category</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Personal Items • Wallets</span>
+</div>
+<h1 class="font-display text-display text-on-surface mb-md">Black Leather Wallet</h1>
+<div class="flex items-center gap-4 text-on-surface-variant mb-xl pb-lg border-b border-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-sm text-body-sm">Oct 24, 2024</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="location_on">location_on</span>
+<span class="font-body-sm text-body-sm">Central Library</span>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="mb-xl">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Description</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Found a black leather bi-fold wallet on the second floor of the Central Library, near the quiet study zone. It has a small, faded silver logo on the bottom right corner. Contains several cards but holding back specific details for verification.
+                    </p>
+</div>
+<!-- Additional Details Bento -->
+<div class="grid grid-cols-2 gap-sm mb-xl">
+<div class="bg-surface-container rounded-lg p-4 border border-surface-variant">
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Color</span>
+<span class="block font-body-md text-body-md font-medium text-on-surface">Black</span>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-surface-variant">
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Brand</span>
+<span class="block font-body-md text-body-md font-medium text-on-surface">Unknown / Generic</span>
+</div>
+</div>
+<!-- Action Area (Spacer to push to bottom if needed, but flex layout handles it) -->
+<div class="mt-auto bg-surface border border-surface-variant rounded-xl p-lg shadow-[0_4px_12px_rgba(0,0,0,0.02)] relative overflow-hidden">
+<!-- Subtle background accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container opacity-10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Think this is yours?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-lg">
+                        You will need to provide specific details not mentioned here (e.g., contents, ID name) to claim this item.
+                    </p>
+<button class="w-full bg-primary-container hover:bg-[#7c69b5] text-on-primary-container font-label-md text-label-md py-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-md active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="waving_hand">waving_hand</span>
+                        Claim this item
+                    </button>
+<!-- Finder Info (Trust Marker) -->
+<div class="mt-lg pt-sm border-t border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">Found by a Verified Student</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[12px]">RUET Administration</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full mt-xl">
+<div class="max-w-max-width mx-auto px-margin-desktop py-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface">RUET Lost &amp; Found</div>
+<div class="flex flex-wrap gap-lg items-center justify-center text-secondary font-body-sm text-body-sm">
+<a class="hover:underline hover:text-primary transition-all duration-200" href="#">University Home</a>
+<a class="hover:underline hover:text-primary transition-all duration-200" href="#">Campus Map</a>
+<a class="hover:underline hover:text-primary transition-all duration-200" href="#">Student Portal</a>
+<a class="hover:underline hover:text-primary transition-all duration-200" href="#">Contact Support</a>
+</div>
+<div class="text-secondary font-body-sm text-body-sm">© 2024 RUET Lost &amp; Found. All rights reserved.</div>
+</div>
+</footer>
+</body></html>
