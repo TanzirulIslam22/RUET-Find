@@ -6,8 +6,8 @@ export const register = asyncHandler(async (req, res) => {
   const result = await authService.registerUser(req.body);
   res.cookie("accessToken", result.token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: true,
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   res.status(201).json(ApiResponse.created(result, "Registration successful"));
@@ -17,8 +17,8 @@ export const login = asyncHandler(async (req, res) => {
   const result = await authService.loginUser(req.body);
   res.cookie("accessToken", result.token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    secure: true,
+    sameSite: "none",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
   res.json(ApiResponse.ok(result, "Login successful"));
