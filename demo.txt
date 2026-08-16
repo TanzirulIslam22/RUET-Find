@@ -1,29 +1,19 @@
-=========================================
-        RUET Find - Demo Accounts
-=========================================
+RUET Find - Demo Credentials
+=============================
 
-ADMIN ACCOUNT
-  Email:    admin@ruet.ac.bd
+Admin:
+  Email: admin@ruet.ac.bd
   Password: admin123
 
-STUDENT ACCOUNTS
-  Email:    sakib@ruet.ac.bd
-  Password: demo123
+Students (password: demo123 for all):
+  Email: sakib@ruet.ac.bd     | Student ID: 1910120 | Dept: CSE
+  Email: tanvir@ruet.ac.bd    | Student ID: 1910045 | Dept: ECE
+  Email: fatima@ruet.ac.bd    | Student ID: 2010078 | Dept: CEE
+  Email: rafid@ruet.ac.bd     | Student ID: 2010155 | Dept: ME
+  Email: nusrat@ruet.ac.bd    | Student ID: 2110032 | Dept: CSE
+  Email: ariful@ruet.ac.bd    | Student ID: 2110089 | Dept: EEE
+  Email: tasnim@ruet.ac.bd    | Student ID: 2210014 | Dept: CSE
+  Email: farhana@ruet.ac.bd   | Student ID: 2010067 | Dept: ARCH
+  Email: zahid@ruet.ac.bd     | Student ID: 1910198 | Dept: ME
 
-  Email:    tanvir@ruet.ac.bd
-  Password: demo123
-
-  Email:    fatima@ruet.ac.bd
-  Password: demo123
-
-  Email:    rafid@ruet.ac.bd
-  Password: demo123
-
-  Email:    nusrat@ruet.ac.bd
-  Password: demo123
-
-=========================================
-  Admin Panel: http://localhost:5173/admin
-  Frontend:    http://localhost:5173
-  Backend:     http://localhost:5000
-=========================================
+Seed Data: 10 users, 54 items across 8 categories
