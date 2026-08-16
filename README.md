@@ -4,6 +4,14 @@ A community-powered **Lost & Found** platform built for **Rajshahi University of
 
 Students can report lost or found items, browse listings with filters, view locations on an interactive campus map, and get smart match suggestions — all in one place.
 
+## Live Links
+
+| Platform | URL |
+| -------- | --- |
+| **Frontend (Vercel)** | https://client-eight-cyan-71.vercel.app |
+| **Backend API (Railway)** | https://server-production-f492.up.railway.app |
+| **GitHub Repository** | https://github.com/TanzirulIslam22/RUET-Find |
+
 ## Features
 
 - **Browse & Search** — Filter lost/found items by category, date, and location
@@ -16,13 +24,13 @@ Students can report lost or found items, browse listings with filters, view loca
 
 ## Tech Stack
 
-| Layer    | Technology                        |
-| -------- | --------------------------------- |
-| Frontend | React 18, Vite, Redux Toolkit, Tailwind CSS |
-| Backend  | Node.js, Express.js               |
-| Database | MongoDB Atlas (Mongoose ODM)      |
-| Auth     | JWT (JSON Web Tokens)             |
-| Uploads  | Multer (local storage)            |
+| Layer    | Technology                                    |
+| -------- | --------------------------------------------- |
+| Frontend | React 18, Vite, Redux Toolkit, Tailwind CSS   |
+| Backend  | Node.js, Express.js                           |
+| Database | MongoDB Atlas (Mongoose ODM)                  |
+| Auth     | JWT (JSON Web Tokens)                         |
+| Hosting  | Vercel (Frontend), Railway (Backend)          |
 
 ## Project Structure
 
@@ -102,25 +110,21 @@ See `demo.txt` for pre-seeded user accounts.
 
 ## API Endpoints
 
-| Method | Endpoint               | Description              | Auth    |
-| ------ | ---------------------- | ------------------------ | ------- |
-| POST   | /api/auth/register     | Register new user        | No      |
-| POST   | /api/auth/login        | Login                    | No      |
-| GET    | /api/auth/me           | Get current user profile | Yes     |
-| GET    | /api/items             | List items (filterable)  | No      |
-| GET    | /api/items/:id         | Get single item          | No      |
-| POST   | /api/items             | Report new item          | Yes     |
-| PUT    | /api/items/:id         | Update item              | Yes     |
-| DELETE | /api/items/:id         | Delete item              | Yes     |
-| GET    | /api/items/smart-match/:id | Smart match for item | No      |
-| GET    | /api/admin/dashboard   | Admin dashboard stats    | Admin   |
-| GET    | /api/admin/items       | Admin list all items     | Admin   |
-| PATCH  | /api/admin/items/:id   | Admin update item status | Admin   |
-| DELETE | /api/admin/items/:id   | Admin delete item        | Admin   |
-
-## Deployment
-
-This project is deployed on **Vercel** (frontend) with the backend hosted separately.
+| Method | Endpoint                    | Description              | Auth    |
+| ------ | --------------------------- | ------------------------ | ------- |
+| POST   | /api/auth/register          | Register new user        | No      |
+| POST   | /api/auth/login             | Login                    | No      |
+| GET    | /api/auth/me                | Get current user profile | Yes     |
+| GET    | /api/items                  | List items (filterable)  | No      |
+| GET    | /api/items/:id              | Get single item          | No      |
+| POST   | /api/items                  | Report new item          | Yes     |
+| PUT    | /api/items/:id              | Update item              | Yes     |
+| DELETE | /api/items/:id              | Delete item              | Yes     |
+| GET    | /api/items/smart-match/:id  | Smart match for item     | No      |
+| GET    | /api/admin/dashboard        | Admin dashboard stats    | Admin   |
+| GET    | /api/admin/items            | Admin list all items     | Admin   |
+| PATCH  | /api/admin/items/:id        | Admin update item status | Admin   |
+| DELETE | /api/admin/items/:id        | Admin delete item        | Admin   |
 
 ## Developer
 
@@ -128,3 +132,7 @@ This project is deployed on **Vercel** (frontend) with the backend hosted separa
 Dept. of CSE, Rajshahi University of Engineering & Technology (RUET)
 RUET ID: 2203054
 Email: tanzirul.islam56@gmail.com
+
+## License
+
+This project is licensed under the MIT License.
