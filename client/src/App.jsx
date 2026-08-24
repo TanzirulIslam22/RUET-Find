@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "./layouts/MainLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import HomePage from "./features/pages/HomePage";
@@ -9,8 +10,10 @@ import ReportItemPage from "./features/pages/ReportItemPage";
 import CampusMapPage from "./features/pages/CampusMapPage";
 import SmartMatchPage from "./features/pages/SmartMatchPage";
 import AuthPage from "./features/pages/AuthPage";
+import ProfilePage from "./features/pages/ProfilePage";
 import HowItWorksPage from "./features/pages/HowItWorksPage";
 import AdminDashboard from "./features/admin/AdminDashboard";
+import { loadUser } from "./store/authSlice";
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useSelector((state) => state.auth);
@@ -27,6 +30,16 @@ const AdminRoute = ({ children }) => {
 };
 
 function App() {
+  const dispatch = useDispatch();
+  const { token, user } = useSelector((state) => state.auth);
+
+  // restore the session on first load if we have a saved token
+  useEffect(() => {
+    if (token && !user) {
+      dispatch(loadUser());
+    }
+  }, [token, user, dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
@@ -41,6 +54,14 @@ function App() {
           element={
             <ProtectedRoute>
               <ReportItemPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         />

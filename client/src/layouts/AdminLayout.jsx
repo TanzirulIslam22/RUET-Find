@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../store/authSlice';
+import { logoutUser } from '../store/authSlice';
 
 const sidebarLinks = [
   { to: '/admin', icon: 'dashboard', label: 'Dashboard', end: true },
@@ -17,7 +17,7 @@ export default function AdminLayout() {
   const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logoutUser());
     navigate('/');
   };
 

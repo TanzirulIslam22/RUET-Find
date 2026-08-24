@@ -1,6 +1,6 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../store/authSlice';
+import { logoutUser } from '../../store/authSlice';
 
 const navLinks = [
   { to: '/', label: 'Home', end: true },
@@ -16,7 +16,7 @@ export default function Navbar() {
   const isLoggedIn = !!token && !!user;
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logoutUser());
     navigate('/');
   };
 

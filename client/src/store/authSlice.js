@@ -39,6 +39,19 @@ export const loadUser = createAsyncThunk(
   }
 );
 
+export const logoutUser = createAsyncThunk(
+  'auth/logoutUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      await authService.logout();
+    } catch (err) {
+      // even if the server call fails, clear local state anyway
+    }
+    localStorage.removeItem('token');
+    return null;
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -98,7 +111,8 @@ const authSlice = createSlice({
       })
       .addCase(loadUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
+        // /auth/me returns the user object directly (interceptor unwraps it)
+        state.user = action.payload?.user ?? action.payload;
       })
       .addCase(loadUser.rejected, (state, action) => {
         state.loading = false;
@@ -106,9 +120,13 @@ const authSlice = createSlice({
         state.token = null;
         state.error = action.payload;
         localStorage.removeItem('token');
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.user = null;
+        state.token = null;
+        state.error = null;
       });
   },
 });
 
-export const { setUser, setLoading, setError, logout } = authSlice.actions;
-export default authSlice.reducer;
+export const { setUser, setLoading, setError, logout } = authSlice.actions;export default authSlice.reducer;
