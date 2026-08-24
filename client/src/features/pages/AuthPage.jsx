@@ -19,6 +19,11 @@ export default function AuthPage() {
   const [regStudentId, setRegStudentId] = useState('');
   const [regDepartment, setRegDepartment] = useState('');
 
+  const demoAccounts = [
+    { role: 'Admin', email: 'admin@ruet.ac.bd', password: 'admin123' },
+    { role: 'Student', email: 'sakib@ruet.ac.bd', password: 'demo123' },
+  ];
+
   useEffect(() => {
     if (user) {
       navigate('/');
@@ -121,6 +126,30 @@ export default function AuthPage() {
                   Sign up
                 </button>
               </p>
+              <div className="bg-surface-container rounded-lg border border-outline-variant p-4">
+                <p className="flex items-center gap-1.5 text-label-sm text-on-surface-variant mb-2.5">
+                  <span className="material-symbols-outlined text-[15px]">key</span>
+                  Demo accounts &mdash; click to fill
+                </p>
+                <div className="space-y-1">
+                  {demoAccounts.map((acc) => (
+                    <button
+                      key={acc.email}
+                      type="button"
+                      onClick={() => {
+                        setLoginEmail(acc.email);
+                        setLoginPassword(acc.password);
+                      }}
+                      className="w-full flex items-center justify-between gap-3 px-2.5 py-2 rounded-md text-body-sm hover:bg-surface-container-high transition-colors text-left"
+                    >
+                      <span className="font-medium text-on-surface shrink-0">{acc.role}</span>
+                      <span className="text-on-surface-variant truncate">
+                        {acc.email} / {acc.password}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </form>
           ) : (
             <form onSubmit={handleRegister} className="space-y-5">
