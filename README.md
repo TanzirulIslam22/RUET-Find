@@ -99,14 +99,14 @@ npm run dev
 
 See `demo.txt` for pre-seeded user accounts.
 
-| Role    | Email                        | Password |
-| ------- | ---------------------------- | -------- |
-| Admin   | admin@ruet.edu               | admin123 |
-| Student | rahim@student.ruet.edu       | pass123  |
-| Student | fatema@student.ruet.edu      | pass123  |
-| Student | kabir@student.ruet.edu       | pass123  |
-| Student | nusrat@student.ruet.edu      | pass123  |
-| Student | samiul@student.ruet.edu      | pass123  |
+| Role    | Email                   | Password |
+| ------- | ----------------------- | -------- |
+| Admin   | admin@ruet.ac.bd        | admin123 |
+| Student | sakib@ruet.ac.bd        | demo123  |
+| Student | tanvir@ruet.ac.bd       | demo123  |
+| Student | fatima@ruet.ac.bd       | demo123  |
+| Student | rafid@ruet.ac.bd        | demo123  |
+| Student | nusrat@ruet.ac.bd       | demo123  |
 
 ## API Endpoints
 
