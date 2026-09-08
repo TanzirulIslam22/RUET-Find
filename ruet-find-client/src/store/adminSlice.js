@@ -51,9 +51,9 @@ export const deleteItem = createAsyncThunk(
 
 export const fetchUsers = createAsyncThunk(
   'admin/fetchUsers',
-  async (_, { rejectWithValue }) => {
+  async (filters = {}, { rejectWithValue }) => {
     try {
-      const { data } = await adminService.getUsers();
+      const { data } = await adminService.getUsers(filters);
       return data;
     } catch (err) {
       return rejectWithValue(err.response?.data?.message || 'Failed to fetch users');
@@ -71,7 +71,11 @@ const adminSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearAdminError(state) {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchDashboard.pending, (state) => {
@@ -130,7 +134,8 @@ const adminSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = action.payload;
+        state.users = action.payload.users || action.payload;
+        state.pagination = action.payload.pagination || null;
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.loading = false;
@@ -139,4 +144,5 @@ const adminSlice = createSlice({
   },
 });
 
+export const { clearAdminError } = adminSlice.actions;
 export default adminSlice.reducer;

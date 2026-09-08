@@ -13,6 +13,9 @@ import AuthPage from "./features/pages/AuthPage";
 import ProfilePage from "./features/pages/ProfilePage";
 import HowItWorksPage from "./features/pages/HowItWorksPage";
 import AdminDashboard from "./features/admin/AdminDashboard";
+import AdminUsersPage from "./features/admin/AdminUsersPage";
+import AdminReportsPage from "./features/admin/AdminReportsPage";
+import AdminSettingsPage from "./features/admin/AdminSettingsPage";
 import { loadUser } from "./store/authSlice";
 
 const ProtectedRoute = ({ children }) => {
@@ -76,6 +79,9 @@ function App() {
         }
       >
         <Route index element={<AdminDashboard />} />
+        <Route path="reports" element={<AdminReportsPage />} />
+        <Route path="users" element={<AdminUsersPage />} />
+        <Route path="settings" element={<AdminSettingsPage />} />
       </Route>
     </Routes>
   );

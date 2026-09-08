@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../../store/authSlice';
 
 export default function ProfilePage() {
@@ -63,7 +63,16 @@ export default function ProfilePage() {
             )}
           </div>
 
-          <div className="px-6 pb-6 pt-2">
+          <div className="px-6 pb-6 pt-2 flex flex-col gap-3">
+            {user.role === 'admin' && (
+              <Link
+                to="/admin"
+                className="w-full flex items-center justify-center gap-2 bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container text-label-md font-medium py-3 rounded-lg transition-colors"
+              >
+                <span className="material-symbols-outlined text-[18px]">admin_panel_settings</span>
+                Admin Panel
+              </Link>
+            )}
             <button
               onClick={handleLogout}
               className="w-full flex items-center justify-center gap-2 border border-outline-variant hover:bg-error-container hover:text-on-error-container hover:border-transparent text-label-md font-medium py-3 rounded-lg transition-colors"

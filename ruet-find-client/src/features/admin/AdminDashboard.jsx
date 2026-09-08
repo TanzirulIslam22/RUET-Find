@@ -66,9 +66,11 @@ const pendingActions = [
 
 const statusBadge = (status) => {
   const styles = {
-    Pending: 'bg-error-container text-on-error-container',
-    Approved: 'bg-primary text-on-primary',
-    Rejected: 'bg-surface-variant text-on-surface-variant',
+    active: 'bg-primary-container text-on-primary-container',
+    pending: 'bg-error-container text-on-error-container',
+    claimed: 'bg-secondary-container text-on-secondary-container',
+    returned: 'bg-primary text-on-primary',
+    expired: 'bg-surface-variant text-on-surface-variant',
   };
   return styles[status] || 'bg-surface-variant text-on-surface-variant';
 };
@@ -237,7 +239,7 @@ export default function AdminDashboard() {
                         {item.image ? (
                           <img
                             src={item.image}
-                            alt={item.name}
+                            alt={item.title}
                             className="w-full h-full object-cover"
                           />
                         ) : (
@@ -247,7 +249,7 @@ export default function AdminDashboard() {
                         )}
                       </div>
                       <span className="text-body-md text-on-surface font-medium">
-                        {item.name}
+                        {item.title}
                       </span>
                     </div>
                   </td>
@@ -258,21 +260,21 @@ export default function AdminDashboard() {
                   </td>
                   <td className="px-6 py-4">
                     <span className="text-body-sm text-on-surface-variant">
-                      {item.user?.name}
+                      {item.reportedBy?.name}
                     </span>
                   </td>
                   <td className="px-6 py-4">
                     <span className="text-body-sm text-on-surface-variant">
-                      {item.createdAt}
+                      {item.createdAt ? new Date(item.createdAt).toLocaleDateString() : '—'}
                     </span>
                   </td>
                   <td className="px-6 py-4">
                     <span
-                      className={`inline-flex px-3 py-1 rounded-full text-label-sm font-medium ${statusBadge(
-                        item.status
+                      className={`inline-flex px-3 py-1 rounded-full text-label-sm font-medium capitalize ${statusBadge(
+                        item.itemStatus
                       )}`}
                     >
-                      {item.status}
+                      {item.itemStatus}
                     </span>
                   </td>
                   <td className="px-6 py-4">

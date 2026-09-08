@@ -9,7 +9,7 @@ const adminService = {
 
   deleteItem: (id) => api.delete(`/admin/items/${id}`),
 
-  getUsers: () => api.get('/admin/users'),
+  getUsers: (params) => api.get('/admin/users', { params }),
 };
 
 export default adminService;
