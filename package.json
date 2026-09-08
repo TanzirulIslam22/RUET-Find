@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd server && npm run dev",
-    "client": "cd client && npm run dev",
-    "install:all": "cd server && npm install && cd ../client && npm install",
-    "build": "cd client && npm run build",
-    "start": "cd server && npm start"
+    "server": "cd ruet-find-server && npm run dev",
+    "client": "cd ruet-find-client && npm run dev",
+    "install:all": "cd ruet-find-server && npm install && cd ../ruet-find-client && npm install",
+    "build": "cd ruet-find-client && npm run build",
+    "start": "cd ruet-find-server && npm start",
+    "seed": "cd ruet-find-server && npm run seed"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
