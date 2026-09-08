@@ -1,13 +1,17 @@
 import axios from 'axios';
 
-function normalizeBaseUrl(url) {
-  const trimmed = (url || '').replace(/\/+$/, '');
-  if (!trimmed || /\/api$/.test(trimmed)) return '/api';
-  return `${trimmed}/api`;
+const PROD_API_URL = 'https://ruet-find-production.up.railway.app/api';
+
+function resolveBaseUrl(raw) {
+  const url = (raw || '').trim().replace(/\/+$/, '');
+  if (url) {
+    return url.endsWith('/api') ? url : `${url}/api`;
+  }
+  return import.meta.env.PROD ? PROD_API_URL : '/api';
 }
 
 const api = axios.create({
-  baseURL: normalizeBaseUrl(import.meta.env.VITE_API_URL),
+  baseURL: resolveBaseUrl(import.meta.env.VITE_API_URL),
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
