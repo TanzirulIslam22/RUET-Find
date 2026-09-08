@@ -23,7 +23,11 @@ export const deleteItem = asyncHandler(async (req, res) => {
 });
 
 export const getAllUsers = asyncHandler(async (req, res) => {
-  const { page = 1, limit = 20 } = req.query;
-  const result = await adminService.getAllUsers(parseInt(page), parseInt(limit));
+  const { page = 1, limit = 20, search } = req.query;
+  const result = await adminService.getAllUsers(
+    parseInt(page),
+    parseInt(limit),
+    search
+  );
   res.json(ApiResponse.ok(result));
 });

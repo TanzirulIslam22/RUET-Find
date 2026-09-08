@@ -92,11 +92,20 @@ export const deleteItemAdmin = async (itemId) => {
   if (!item) throw ApiError.notFound("Item not found");
 };
 
-export const getAllUsers = async (page = 1, limit = 20) => {
+export const getAllUsers = async (page = 1, limit = 20, search) => {
+  const query = {};
+  if (search) {
+    query.$or = [
+      { name: { $regex: search, $options: "i" } },
+      { email: { $regex: search, $options: "i" } },
+      { studentId: { $regex: search, $options: "i" } },
+    ];
+  }
+
   const skip = (page - 1) * limit;
   const [users, total] = await Promise.all([
-    User.find().sort({ createdAt: -1 }).skip(skip).limit(limit),
-    User.countDocuments(),
+    User.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit),
+    User.countDocuments(query),
   ]);
   return {
     users,

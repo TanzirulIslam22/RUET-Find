@@ -9,6 +9,17 @@ const generateToken = (userId) => {
   });
 };
 
+const toPublicUser = (user) => ({
+  _id: user._id,
+  name: user.name,
+  email: user.email,
+  studentId: user.studentId,
+  department: user.department,
+  phone: user.phone,
+  role: user.role,
+  createdAt: user.createdAt,
+});
+
 export const registerUser = async ({ name, email, password, studentId, department, phone }) => {
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -34,14 +45,7 @@ export const registerUser = async ({ name, email, password, studentId, departmen
   const token = generateToken(user._id);
 
   return {
-    user: {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      studentId: user.studentId,
-      department: user.department,
-      role: user.role,
-    },
+    user: toPublicUser(user),
     token,
   };
 };
@@ -60,14 +64,7 @@ export const loginUser = async ({ email, password }) => {
   const token = generateToken(user._id);
 
   return {
-    user: {
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      studentId: user.studentId,
-      department: user.department,
-      role: user.role,
-    },
+    user: toPublicUser(user),
     token,
   };
 };
